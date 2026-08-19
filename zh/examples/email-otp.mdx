@@ -1,0 +1,58 @@
+---
+title: "示例：邮件 OTP"
+description: "一个可移植邮件验证功能的完整合同"
+icon: "envelope"
+---
+
+这个示例展示一个小而有用的 Graft 应该包含多少细节。
+
+## `GRAFT.md`
+
+```md
+---
+name: email-otp
+description: Email one-time password verification flow. Use when implementing or porting email-based verification.
+version: "1.0.0"
+license: MIT
+tags: [auth, otp, email]
+compatibility: Any web application with a transactional email provider and durable short-lived state.
+---
+
+## Intent
+在账户操作继续前，验证用户可以控制指定邮箱。
+
+## Behavior
+1. 接收邮箱地址并创建一次性验证码。
+2. 通过配置的邮件服务发送验证码。
+3. 在过期前只接受一次验证码。
+4. 完成验证并使验证码失效。
+
+## Constraints
+- 验证码 10 分钟后过期。
+- 按邮箱和客户端身份限制发送与尝试次数。
+- 只存储哈希值，绝不存储原始验证码。
+- 不记录或返回验证码。
+- 成功验证不可重放。
+
+## Interfaces
+POST /verification/start { email }
+POST /verification/confirm { email, code }
+
+## Adaptation guidance
+保留状态机、过期、单次使用和限流行为。
+替换邮件服务、持久化层和框架相关处理器。
+
+## Out of scope
+密码重置、账户找回、修改邮箱和欺诈评分。
+
+## Acceptance
+- 有效验证码只能成功一次。
+- 过期、格式错误和重放验证码必须失败。
+- 过量发送和尝试必须被拒绝。
+- 日志和响应中不能出现原始验证码。
+```
+
+## 为什么它容易迁移
+
+这个示例对行为和约束足够具体，同时刻意不绑定实现方式。
+Agent 可以把它映射到 Serverless 函数、Rails Controller、Go 服务或 TypeScript API，而不会丢失安全模型。

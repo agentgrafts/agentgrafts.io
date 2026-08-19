@@ -10,22 +10,53 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
+    "languages": [
       {
-        "group": "Start here",
-        "pages": [
-          "index",
-          "quickstart",
-          "why-grafts"
+        "language": "en",
+        "default": true,
+        "groups": [
+          {
+            "group": "Start here",
+            "pages": ["index", "quickstart", "why-grafts"]
+          },
+          {
+            "group": "The format",
+            "pages": ["specification", "lifecycle", "examples/email-otp"]
+          },
+          {
+            "group": "Ecosystem",
+            "pages": ["skills-mcp", "roadmap"]
+          }
         ]
       },
       {
-        "group": "The format",
-        "pages": ["specification", "lifecycle", "examples/email-otp"]
-      },
-      {
-        "group": "Ecosystem",
-        "pages": ["skills-mcp", "roadmap"]
+        "language": "zh",
+        "groups": [
+          {
+            "group": "开始使用",
+            "pages": ["zh/index", "zh/quickstart", "zh/why-grafts"]
+          },
+          {
+            "group": "格式规范",
+            "pages": ["zh/specification", "zh/lifecycle", "zh/examples/email-otp"]
+          },
+          {
+            "group": "生态系统",
+            "pages": ["zh/skills-mcp", "zh/roadmap"]
+          }
+        ],
+        "navbar": {
+          "links": [
+            { "label": "规范", "href": "/zh/specification" },
+            { "label": "English", "href": "/" },
+            { "label": "GitHub", "href": "https://github.com/agentgrafts/agentgrafts" }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "快速开始",
+            "href": "/zh/quickstart"
+          }
+        }
       }
     ],
     "global": {
@@ -55,6 +86,7 @@
   "navbar": {
     "links": [
       { "label": "Specification", "href": "/specification" },
+      { "label": "中文", "href": "/zh" },
       { "label": "GitHub", "href": "https://github.com/agentgrafts/agentgrafts" }
     ],
     "primary": {

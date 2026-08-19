@@ -1,0 +1,49 @@
+---
+title: "AgentGrafts"
+description: "面向 AI Agent 的可移植功能实现知识"
+icon: "code-branch"
+---
+
+# 一次构建，随处嫁接
+
+AgentGrafts 是一种开放格式，用来封装已验证功能背后的知识，让 AI Agent 能在新项目中重新实现它。
+
+它与两个已经形成生态的基础层互补：
+
+<Columns cols={3}>
+  <Card title="MCP" icon="plug" href="https://modelcontextprotocol.io/">连接数据、工具与工作流。</Card>
+  <Card title="Agent Skills" icon="sparkles" href="https://agentskills.io/home">教 Agent 如何完成一类任务。</Card>
+  <Card title="AgentGrafts" icon="code-branch" href="/zh/why-grafts">携带具体功能的意图、约束与验收证据，进入新的代码库。</Card>
+</Columns>
+
+<Info>Graft 是知识资产，不是源码倾倒。它保留必须成立的事实，把实现细节交给宿主项目。</Info>
+
+## 从想法到实现的最短路径
+
+<Steps>
+  <Step title="Extract，提取">从源项目描述一个已验证功能：意图、行为、约束、接口、依赖与验收标准。</Step>
+  <Step title="Package，打包">把知识放入带有 `GRAFT.md` 的版本化目录。只有在确实帮助适配时，才添加 references、adapters、tests 或 assets。</Step>
+  <Step title="Apply，应用">在新项目中把 Graft 交给 Agent。Agent 映射当前技术栈，实现功能，并逐项检查验收标准。</Step>
+</Steps>
+
+<Card title="创建你的第一个 Graft" icon="rocket" href="/zh/quickstart">从一个已经稳定运行的功能开始，在几分钟内把它变成可移植合同。</Card>
+
+## 为渐进披露而设计
+
+发现阶段，Agent 只需要读取 `name` 和 `description`。
+任务匹配后，再加载完整的 `GRAFT.md`。
+只有确实需要时，才读取 references 或执行 tests。
+
+```text
+my-feature/
+├── GRAFT.md
+├── references/
+├── adapters/
+├── tests/
+└── assets/
+```
+
+<CardGroup cols={2}>
+  <Card title="阅读格式规范" icon="book-open" href="/zh/specification">了解必需元数据与推荐正文结构。</Card>
+  <Card title="查看完整示例" icon="file-code" href="/zh/examples/email-otp">从意图到验收，完整跟随一个邮件 OTP 流程。</Card>
+</CardGroup>

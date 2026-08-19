@@ -1,0 +1,33 @@
+---
+title: "路线图"
+description: "从格式走向生态的路径"
+icon: "map"
+---
+
+AgentGrafts 会从小而稳定的合同开始。
+路线图优先让格式真正有用，再逐步增加工具与生态能力。
+
+## 近期
+
+- 冻结 v0 必需元数据与推荐语义章节。
+- 发布 email OTP、Webhook 签名验证和限流 API 的参考 Graft。
+- 定义与 Agent Skills、MCP 的桥接方式。
+- 用真实多项目工作验证 Extract、Package、Apply 闭环。
+
+## 后续
+
+- 提供引导式 `graft extract` 工作流。
+- 增加 `graft pack`，校验元数据、目录结构和 Acceptance。
+- 增加 `graft apply` 提示，帮助 Agent 适配而不是复制私有实现。
+- 探索带有来源、版本和人工审查机制的 Registry。
+
+## 项目原则
+
+<CardGroup cols={2}>
+  <Card title="先人工审查" icon="user-check">早期提取优先保证边界准确，而不是追求完全自动化。</Card>
+  <Card title="保持合同小巧" icon="minimize">只有在改善发现、适配或验证时，才增加结构。</Card>
+  <Card title="衡量迁移质量" icon="chart-line">评估目标行为是否符合源功能的意图与约束。</Card>
+  <Card title="保持开放" icon="globe">让格式不绑定厂商、适合 Git，并且容易被任何 Agent 消费。</Card>
+</CardGroup>
+
+<Tip>最有价值的下一步贡献，是把你已经交付过的真实功能写成一个 Graft。具体案例会比抽象讨论更快塑造格式。</Tip>

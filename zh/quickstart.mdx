@@ -1,0 +1,61 @@
+---
+title: "快速开始"
+description: "把一个已验证功能打包成你的第一个 Graft"
+icon: "rocket"
+---
+
+理解 AgentGrafts 最快的方式，是把团队已经交付过的一个功能打包出来。
+
+## 开始前准备
+
+- 一个已经在生产环境或可靠测试环境中验证过的源项目功能。
+- 定义该功能行为的文件、配置和测试。
+- 一个希望重新实现该功能的目标项目或不同技术栈。
+
+## 创建 Graft
+
+<Steps>
+  <Step title="选择一个功能">选择邮件 OTP、Webhook 签名验证或限流 API 这类边界清晰的能力。不要从整个子系统开始。</Step>
+  <Step title="创建目录">使用简短的小写标识，例如 `email-otp/GRAFT.md`。</Step>
+  <Step title="编写合同">加入 frontmatter，然后描述 Intent、Behavior、Constraints、Interfaces、Dependencies、Adaptation Guidance、Out of Scope 和 Acceptance。</Step>
+  <Step title="在新项目中应用">把文件路径和不可违背的约束明确交给 Agent。</Step>
+</Steps>
+
+```text
+严格按照 email-otp/GRAFT.md 实现该功能。
+适配当前项目的技术栈与约定。
+保留 Constraints 与 Out of Scope。
+完成后逐项检查 Acceptance。
+```
+
+## 最小 `GRAFT.md`
+
+```md
+---
+name: email-otp
+description: Email one-time password verification flow. Use when porting email-based account verification.
+version: "1.0.0"
+license: MIT
+tags: [auth, otp, email]
+---
+
+## Intent
+在继续操作前验证用户可以控制指定邮箱。
+
+## Behavior
+生成短期验证码并发送，然后只接受一次有效验证。
+
+## Constraints
+- 验证码 10 分钟后过期。
+- 发送和验证尝试必须限流。
+- 不记录验证码，也不通过 API 返回验证码。
+
+## Acceptance
+- 过期验证码必须失败。
+- 有效验证码只能成功一次。
+- 重放和过量尝试必须安全失败。
+```
+
+<Tip>合同才是产品。项目私有的名称和路径放入 `references/`，不要污染可移植核心。</Tip>
+
+继续阅读[完整规范](/zh/specification)，或查看[邮件 OTP 示例](/zh/examples/email-otp)。

@@ -1,0 +1,39 @@
+---
+title: "Skills 与 MCP"
+description: "AgentGrafts 如何融入 Agent 生态"
+icon: "network-wired"
+---
+
+AgentGrafts 为 Agent 周围的开放生态而设计。
+它不替代 Agent Skills 或 MCP，因为它回答的是另一个问题。
+
+## 一个实用的心智模型
+
+```text
+MCP          -> Agent 可以访问什么
+Agent Skills -> Agent 如何完成一类工作
+AgentGrafts  -> 一个已验证功能如何被构建并重新构建
+```
+
+MCP 标准化 AI 应用与外部系统之间的连接，例如数据源、工具和工作流。
+Agent Skills 把程序性知识与资源打包进可移植目录。
+AgentGrafts 则打包带有证据、边界和验收标准的实例级实现知识。
+
+## 组合这些层
+
+<Steps>
+  <Step title="通过 MCP 发现">查询仓库、Registry 或内部目录，寻找与当前任务匹配的 Graft。</Step>
+  <Step title="通过 Skill 提取">用 Skill 指导仓库检查、证据收集和合同编写。</Step>
+  <Step title="应用 Graft">加载匹配的 `GRAFT.md`，适配宿主项目，并验证 Acceptance。</Step>
+</Steps>
+
+## 桥接方式
+
+| 方式 | 适用场景 |
+| --- | --- |
+| 本地目录中的 Graft | 团队通过 Git 共享合同。 |
+| 通过 MCP 暴露 Graft | Agent 需要远程搜索与发现。 |
+| 将 Graft 包装成 Skill | 客户端已经理解 Skills，需要一个引导工作流。 |
+| Skill 消费 Graft | 可重复方法需要具体、已验证的功能合同。 |
+
+<Info>开放边界很重要：即使发现客户端或执行 Agent 发生变化，Graft 仍然应该可读、可用。</Info>
