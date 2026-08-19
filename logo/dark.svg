@@ -1,5 +1,5 @@
 <svg width="190" height="32" viewBox="0 0 190 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="1" y="1" width="30" height="30" rx="8" fill="#18E299"/>
-  <path d="M9 21.5 15.3 15 19 18.8 24 13.5M19 18.8 22.8 22" stroke="#063D2C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="42" y="22" fill="white" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="700">AgentGrafts</text>
+  <rect x="1" y="1" width="30" height="30" rx="8" fill="#0B0C0E"/>
+  <path d="M9 21.5 15.3 15 19 18.8 24 13.5M19 18.8 22.8 22" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="42" y="22" fill="#0B0C0E" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="700">AgentGrafts</text>
 </svg>

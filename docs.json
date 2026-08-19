@@ -4,9 +4,9 @@
   "name": "AgentGrafts",
   "description": "Portable implementation knowledge for AI agents.",
   "colors": {
-    "primary": "#0C8C5E",
-    "light": "#18E299",
-    "dark": "#07553D"
+    "primary": "#0B0C0E",
+    "light": "#FFFFFF",
+    "dark": "#0B0C0E"
   },
   "favicon": "/favicon.svg",
   "navigation": {
