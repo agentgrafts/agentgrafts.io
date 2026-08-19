@@ -48,8 +48,7 @@
         "navbar": {
           "links": [
             { "label": "规范", "href": "/zh/specification" },
-            { "label": "English", "href": "/" },
-            { "label": "GitHub", "href": "https://github.com/agentgrafts/agentgrafts" }
+            { "label": "GitHub", "href": "https://github.com/agentgrafts/agentgrafts.io" }
           ],
           "primary": {
             "type": "button",
@@ -63,7 +62,7 @@
       "anchors": [
         {
           "anchor": "GitHub",
-          "href": "https://github.com/agentgrafts/agentgrafts",
+          "href": "https://github.com/agentgrafts/agentgrafts.io",
           "icon": "github"
         },
         {
@@ -86,8 +85,7 @@
   "navbar": {
     "links": [
       { "label": "Specification", "href": "/specification" },
-      { "label": "中文", "href": "/zh" },
-      { "label": "GitHub", "href": "https://github.com/agentgrafts/agentgrafts" }
+      { "label": "GitHub", "href": "https://github.com/agentgrafts/agentgrafts.io" }
     ],
     "primary": {
       "type": "button",
