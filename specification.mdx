@@ -1,0 +1,59 @@
+---
+title: "Specification"
+description: "The open format for portable implementation knowledge"
+icon: "file-certificate"
+---
+
+An AgentGraft is a self-contained directory with one required file: `GRAFT.md`.
+The format is human-readable, version-controlled, and independent of a specific agent, framework, or vendor.
+
+## Directory layout
+
+```text
+feature-name/
+├── GRAFT.md
+├── references/
+├── assets/
+├── adapters/
+└── tests/
+```
+
+## Frontmatter
+
+| Field | Required | Guidance |
+| --- | --- | --- |
+| `name` | Yes | Lowercase identifier with letters, numbers, and hyphens. Max 64 characters. |
+| `description` | Yes | Say what the feature is and when to use it. This powers discovery. |
+| `version` | Recommended | Use semantic versioning for contract changes. |
+| `license` | Recommended | Make reuse terms explicit. |
+| `tags` | Optional | Add discovery terms such as `auth`, `payments`, or `webhooks`. |
+| `source` | Optional | Identify the source project without leaking private paths. |
+| `compatibility` | Optional | Record known stack or architecture assumptions. |
+| `metadata` | Optional | Store author, organization, or timestamp extensions. |
+
+## Recommended body
+
+<Tabs>
+  <Tab title="Intent and behavior">Explain the user problem, visible outcome, main flow, and failure paths.</Tab>
+  <Tab title="Constraints and interfaces">Record security, limits, state transitions, APIs, events, and core data shapes.</Tab>
+  <Tab title="Adaptation and acceptance">Separate what must remain invariant from what can change, then state how to verify completion.</Tab>
+</Tabs>
+
+The suggested semantic sections are:
+
+1. **Intent**: the problem and user-visible outcome.
+2. **Behavior**: success, failure, and state transitions.
+3. **Constraints**: rules that cannot be weakened during adaptation.
+4. **Interfaces**: APIs, events, schemas, or pseudocode contracts.
+5. **Dependencies**: services, libraries, and configuration assumptions.
+6. **Adaptation guidance**: what to preserve and what to replace.
+7. **Out of scope**: explicit boundaries that prevent accidental expansion.
+8. **Acceptance**: observable checks or test intent.
+
+## Design principles
+
+- **Progressive disclosure**: index metadata first, full instructions only when relevant.
+- **Portable and versioned**: keep the contract independent from private project structure.
+- **Human-reviewable**: the file is a contract people can inspect and improve.
+- **Composable**: use it alone or alongside Skills and MCP.
+- **Knowledge over code**: references may contain excerpts, but the core should explain decisions.

@@ -1,47 +1,61 @@
 ---
 title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+description: "Package a verified feature as your first Graft"
+icon: "rocket"
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
+The fastest way to understand AgentGrafts is to package one feature your team has already shipped.
 
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
+## Before you start
 
-## Prerequisites
+- A source project with a feature that works in production or in a verified test environment.
+- The files, configuration, and tests that define the feature's behavior.
+- A destination project or a second stack where you want to rebuild it.
 
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+## Create a Graft
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
-
-    ```bash
-    npm install your-package
-    ```
-  </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
-
-    ```bash
-    your-cli init
-    ```
-  </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
-
-    ```bash
-    your-cli start
-    ```
-  </Step>
+  <Step title="Choose one feature">Pick a bounded capability such as email OTP, webhook signature verification, or a rate-limited API. Avoid starting with an entire subsystem.</Step>
+  <Step title="Create the directory">Use a short, lowercase identifier: `email-otp/GRAFT.md`.</Step>
+  <Step title="Write the contract">Add frontmatter, then describe intent, behavior, constraints, interfaces, dependencies, adaptation guidance, out of scope, and acceptance.</Step>
+  <Step title="Apply it in a new project">Give the agent a direct instruction that names the file and protects the contract.</Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+```text
+Implement this feature from email-otp/GRAFT.md.
+Adapt it to the current stack and conventions.
+Preserve Constraints and Out of Scope.
+Check every item in Acceptance before finishing.
+```
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+## Minimal `GRAFT.md`
+
+```md
+---
+name: email-otp
+description: Email one-time password verification flow. Use when porting email-based account verification.
+version: "1.0.0"
+license: MIT
+tags: [auth, otp, email]
+---
+
+## Intent
+Verify that a person controls an email address before continuing.
+
+## Behavior
+Issue a short-lived code, deliver it, then accept one valid attempt.
+
+## Constraints
+- Codes expire after 10 minutes.
+- Verification attempts are rate limited.
+- Never log the code or return it from an API.
+
+## Acceptance
+- Expired codes fail.
+- A valid code succeeds once.
+- Replays and excessive attempts fail safely.
+```
+
+<Tip>The contract is the product. Keep project-specific names and paths in `references/`, not in the portable core.</Tip>
+
+Continue with the [full specification](/specification) or inspect the [email OTP example](/examples/email-otp).

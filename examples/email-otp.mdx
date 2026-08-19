@@ -1,0 +1,58 @@
+---
+title: "Example: email OTP"
+description: "A complete feature contract for portable email verification"
+icon: "envelope"
+---
+
+This example shows the level of detail a small, useful Graft should carry.
+
+## `GRAFT.md`
+
+```md
+---
+name: email-otp
+description: Email one-time password verification flow. Use when implementing or porting email-based verification.
+version: "1.0.0"
+license: MIT
+tags: [auth, otp, email]
+compatibility: Any web application with a transactional email provider and durable short-lived state.
+---
+
+## Intent
+Verify that a person controls an email address before an account action continues.
+
+## Behavior
+1. Accept an email address and create a single-use code.
+2. Deliver the code through the configured mail provider.
+3. Accept the code once before expiry.
+4. Mark the verification complete and invalidate the code.
+
+## Constraints
+- Code expires after 10 minutes.
+- Attempts and sends are rate limited by address and client identity.
+- Store a hash, never the raw code.
+- Do not log or return the code.
+- A successful verification cannot be replayed.
+
+## Interfaces
+POST /verification/start { email }
+POST /verification/confirm { email, code }
+
+## Adaptation guidance
+Keep the state machine, expiry, single-use behavior, and rate limits.
+Replace the mail provider, persistence layer, and framework-specific handlers.
+
+## Out of scope
+Password reset, account recovery, email change, and fraud scoring.
+
+## Acceptance
+- Valid code succeeds exactly once.
+- Expired, malformed, and replayed codes fail.
+- Excessive sends and attempts are rejected.
+- Raw codes are absent from logs and responses.
+```
+
+## Why this transfers well
+
+The example is specific about behavior and constraints, but deliberately neutral about implementation.
+An agent can map it to a serverless function, a Rails controller, a Go service, or a TypeScript API without losing the security model.

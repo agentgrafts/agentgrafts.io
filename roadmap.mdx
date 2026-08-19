@@ -1,0 +1,33 @@
+---
+title: "Roadmap"
+description: "The path from format to ecosystem"
+icon: "map"
+---
+
+AgentGrafts is intentionally starting with a small, stable contract.
+The roadmap focuses on making the format useful before making it elaborate.
+
+## Near term
+
+- Freeze the v0 required metadata and recommended semantic sections.
+- Publish reference Grafts for email OTP, webhook signature verification, and rate-limited APIs.
+- Document bridges to Agent Skills and MCP.
+- Validate the Extract → Package → Apply loop against real multi-project work.
+
+## Next
+
+- Provide a guided `graft extract` workflow.
+- Add `graft pack` validation for metadata, structure, and missing acceptance criteria.
+- Add `graft apply` prompts that help agents adapt without copying private implementation details.
+- Explore registries with provenance, versioning, and human review.
+
+## Principles for the project
+
+<CardGroup cols={2}>
+  <Card title="Start human-reviewed" icon="user-check">Early extraction should favor accurate boundaries over full automation.</Card>
+  <Card title="Keep the contract small" icon="minimize">Add structure only when it improves discovery, adaptation, or verification.</Card>
+  <Card title="Measure transfer quality" icon="chart-line">Evaluate whether the destination behavior matches the source intent and constraints.</Card>
+  <Card title="Stay open" icon="globe">Keep the format vendor-neutral, Git-friendly, and easy for any agent to consume.</Card>
+</CardGroup>
+
+<Tip>The best next contribution is a real Graft from a feature you have already shipped. Concrete examples will shape the format better than abstract debate.</Tip>

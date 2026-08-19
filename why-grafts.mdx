@@ -1,0 +1,45 @@
+---
+title: "Why Grafts?"
+description: "The missing layer between task methods and connected tools"
+icon: "layers"
+---
+
+AI agents can connect to systems and follow instructions.
+The missing piece is a portable record of how a specific feature was actually built, including the decisions that make it safe to rebuild.
+
+## Three different jobs
+
+| Layer | Core question | Typical unit |
+| --- | --- | --- |
+| MCP | What can the agent access or call? | Server, tool, resource |
+| Agent Skills | How should the agent perform a kind of task? | `SKILL.md` folder |
+| AgentGrafts | What feature was built, why, and how should it be rebuilt here? | `GRAFT.md` folder |
+
+<Note>These layers are complementary. An agent can use MCP to inspect a repository, a Skill to guide extraction, and a Graft to carry the verified feature contract into a new project.</Note>
+
+## Why source code is not enough
+
+Copying a module carries syntax but often loses the decisions around it:
+
+- Which states are user-visible?
+- Which failures are safe to retry?
+- What must be rate limited or audited?
+- Which interfaces are stable and which are replaceable?
+- How do you know the port is complete?
+
+A Graft makes those decisions explicit and reviewable.
+
+## What makes the category useful
+
+<CardGroup cols={2}>
+  <Card title="Feature-first" icon="target">A feature is a first-class asset that can be found, versioned, reviewed, and reused.</Card>
+  <Card title="Knowledge over code" icon="lightbulb">Preserve intent and constraints instead of forcing one project's implementation onto another.</Card>
+  <Card title="Evidence included" icon="badge-check">Acceptance criteria and behavior-level tests give the agent a target it can verify.</Card>
+  <Card title="Composable" icon="puzzle-piece">Grafts can be loaded directly, exposed through MCP, or wrapped as Skills.</Card>
+</CardGroup>
+
+## The practical payoff
+
+When Project B needs a capability already proven in Project A, you transfer a small, durable contract instead of restarting discovery from scratch.
+The destination agent still writes native code for Project B.
+The hard-won knowledge survives the boundary.

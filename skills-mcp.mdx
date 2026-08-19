@@ -1,0 +1,39 @@
+---
+title: "Skills and MCP"
+description: "How AgentGrafts fits the agent ecosystem"
+icon: "network-wired"
+---
+
+AgentGrafts is designed to work with the open ecosystem around agents.
+It does not replace Agent Skills or MCP because it answers a different question.
+
+## A useful mental model
+
+```text
+MCP          -> what an agent can access
+Agent Skills -> how an agent performs a class of work
+AgentGrafts  -> how a verified feature was built and can be rebuilt
+```
+
+MCP standardizes connections between AI applications and external systems such as data sources, tools, and workflows.
+Agent Skills package procedural knowledge and resources in a portable folder.
+AgentGrafts package instance-level implementation knowledge with evidence, boundaries, and acceptance.
+
+## Compose the layers
+
+<Steps>
+  <Step title="Discover with MCP">Query a repository, registry, or internal catalog for Grafts that match the current task.</Step>
+  <Step title="Extract with a Skill">Use a Skill to guide repository inspection, evidence gathering, and contract writing.</Step>
+  <Step title="Apply the Graft">Load the matching `GRAFT.md`, adapt it to the host project, and verify its acceptance criteria.</Step>
+</Steps>
+
+## Bridge patterns
+
+| Pattern | Use it when |
+| --- | --- |
+| Graft as a local folder | A team shares contracts through Git. |
+| Graft exposed by MCP | Agents need searchable, remote discovery. |
+| Graft wrapped as a Skill | A client already understands Skills and needs a guided workflow. |
+| Skill consuming a Graft | A repeatable method needs a concrete, verified feature contract. |
+
+<Info>The open boundary matters: a Graft should remain readable and useful even when the discovery client or execution agent changes.</Info>
